@@ -14,7 +14,7 @@ Follow these steps to manually download and set up the Battery Health Tracker ta
 
 ### Download Instructions
 
-1. Download the executable from the [releases page](
+1. Download the executable from the [releases page](https://github.com/whayn/battery-life-tracker/releases/latest)
 2. Extract the contents of the zip file to a directory of your choice.
 3. Note the path to the executable, e.g., `C:\Users\user\AppData\Local\Battery Life Tracker\battery-health-tracker.exe`.
 4. Note the path to the working directory, e.g., `C:\Users\user\AppData\Local\Battery Life Tracker`.
@@ -69,9 +69,7 @@ Follow these steps to manually download and set up the Battery Health Tracker ta
    - Check `Stop the task if it runs longer than` and set it to `1 hour`.
    - Ensure other options are set as needed.
 
-8. **Finish**:
-   - Click `OK` to create the task.
-   - If prompted, enter your user credentials to save the task.
+8. Click `OK` to create the task (If prompted, enter your user credentials to save the task.)
 
 ## Building Instructions
 
