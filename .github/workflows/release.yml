@@ -29,10 +29,10 @@ jobs:
         run: mkdir release
 
       - name: Copy executable to release directory
-        run: cp target/release/battery-health-tracker release/
+        run: cp target/release/battery-life-tracker release/
 
       - name: Create ZIP file
-        run: zip -j release/battery-health-tracker.zip release/battery-health-tracker
+        run: zip -j release/battery-life-tracker.zip release/battery-life-tracker
 
       - name: Create GitHub Release
         id: create_release
@@ -49,6 +49,6 @@ jobs:
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: release/battery-health-tracker.zip
-          asset_name: battery-health-tracker.zip
+          asset_path: release/battery-life-tracker.zip
+          asset_name: battery-life-tracker.zip
           asset_content_type: application/zip
