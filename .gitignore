@@ -1,4 +1,4 @@
 /target
 /battery-reports
 battery_capacity.csv
-Cargo.toml
+Cargo.lock
