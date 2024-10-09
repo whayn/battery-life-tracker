@@ -23,8 +23,11 @@ jobs:
           toolchain: stable
           override: true
 
-      - name: Build the project
-        run: cargo build --release
+      - name: Install target for Windows
+        run: rustup target add x86_64-pc-windows-gnu
+
+      - name: Build the project for Windows
+        run: cargo build --release --target x86_64-pc-windows-gnu
 
       - name: Create release
         env:
@@ -35,4 +38,4 @@ jobs:
               --repo="$GITHUB_REPOSITORY" \
               --title="${GITHUB_REPOSITORY#*/} ${tag#v}" \
               --generate-notes \
-              target/release/battery-life-tracker#battery-life-tracker
+              target/x86_64-pc-windows-gnu/release/battery-life-tracker.exe#battery-life-tracker.exe
