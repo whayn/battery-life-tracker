@@ -1,4 +1,4 @@
-name: Release
+name: Create release
 
 on:
   push:
@@ -9,8 +9,9 @@ permissions:
   contents: write
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  release:
+    name: Release pushed tag
+    runs-on: ubuntu-22.04
 
     steps:
       - name: Checkout repository
@@ -25,21 +26,13 @@ jobs:
       - name: Build the project
         run: cargo build --release
 
-      - name: Create GitHub Release
-        id: create_release
-        uses: actions/create-release@v1
+      - name: Create release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          draft: false
-          prerelease: false
-
-      - name: Upload Release Asset
-        uses: actions/upload-release-asset@v1
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: target/release/battery-life-tracker
-          asset_name: battery-life-tracker
-          asset_content_type: application/octet-stream
+          tag: ${{ github.ref_name }}
+        run: |
+          gh release create "$tag" \
+              --repo="$GITHUB_REPOSITORY" \
+              --title="${GITHUB_REPOSITORY#*/} ${tag#v}" \
+              --generate-notes \
+              target/release/battery-life-tracker#battery-life-tracker
