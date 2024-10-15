@@ -1,3 +1,5 @@
+#![windows_subsystem = "windows"]
+
 use chrono::Local;
 use scraper::{Html, Selector};
 use std::env;
